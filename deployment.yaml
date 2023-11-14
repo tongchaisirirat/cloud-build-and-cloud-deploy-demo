@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: nginx
-          image: asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}
+          image: gcr.io/devops-sandbox-2023/nginx-image:${COMMIT_SHA}
           ports:
             - containerPort: 80
 
