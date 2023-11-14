@@ -4,7 +4,7 @@ metadata:
   name: git-ops
 build:
   artifacts:
-  - image: gcr.io/devops-sandbox-2023/nginx-image
+  - image: gcr.io/devops-sandbox-2023/zabbix
     docker:
       dockerfile: Dockerfile
 deploy:
