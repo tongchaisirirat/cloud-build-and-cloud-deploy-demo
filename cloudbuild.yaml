@@ -10,7 +10,7 @@ steps:
 
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'gcr.io/devops-sandbox-2023/zabbix${COMMIT_SHA}']
+  args: ['push', 'gcr.io/devops-sandbox-2023/zabbix:${COMMIT_SHA}']
 # Create release in Google Cloud Deploy
 
 
