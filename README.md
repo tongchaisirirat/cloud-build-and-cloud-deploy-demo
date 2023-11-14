@@ -1,6 +1,7 @@
 # cloud-build-and-cloud-deploy-demo
 
 # 0.IAM
+autopilot not set iam
 
 
 
