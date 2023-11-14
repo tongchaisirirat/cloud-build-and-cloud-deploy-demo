@@ -21,7 +21,7 @@ gke:
  cluster:  projects/$PROJECT_ID/locations/asia-southeast1/clusters/autopilot-cluster-mind-test
 executionConfigs:
 - defaultPool:
-    serviceAccount: gke-clouddeploy-sa@$PROJECT_ID.iam.gserviceaccount.com
+    serviceAccount: 89653962997-compute@developer.gserviceaccount.com
   usages:
   - RENDER 
   - DEPLOY   
@@ -38,7 +38,7 @@ gke:
  cluster:  projects/$PROJECT_ID/locations/asia-southeast1/clusters/autopilot-cluster-mind-prod
 executionConfigs:
 - defaultPool:
-    serviceAccount: gke-clouddeploy-s@$PROJECT_ID.iam.gserviceaccount.com
+    serviceAccount: 89653962997-compute@developer.gserviceaccount.com
   usages:
   - RENDER 
   - DEPLOY
