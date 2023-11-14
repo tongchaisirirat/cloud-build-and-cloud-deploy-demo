@@ -18,7 +18,7 @@ metadata:
  name: qsdev
 description: development cluster
 gke:
- cluster:  projects/$PROJECT_ID/locations/asia-southeast1/clusters/autopilot-cluster-mind-test
+ cluster:  projects/devops-sandbox-2023/locations/asia-southeast1/clusters/autopilot-cluster-mind-test
 executionConfigs:
 - defaultPool:
     serviceAccount: 89653962997-compute@developer.gserviceaccount.com
@@ -35,7 +35,7 @@ metadata:
 description: production cluster
 requireApproval: true
 gke:
- cluster:  projects/$PROJECT_ID/locations/asia-southeast1/clusters/autopilot-cluster-mind-prod
+ cluster:  projects/devops-sandbox-2023/locations/asia-southeast1/clusters/autopilot-cluster-mind-prod
 executionConfigs:
 - defaultPool:
     serviceAccount: 89653962997-compute@developer.gserviceaccount.com

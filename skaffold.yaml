@@ -1,4 +1,4 @@
-apiVersion: skaffold/v2beta26
+apiVersion: skaffold/v3alpha1
 kind: Config
 metadata:
   name: git-ops
@@ -10,4 +10,4 @@ build:
 deploy:
   kubectl:
     manifests:
-    - deployment.yaml
+    - k8s-manifests/deployment.yaml

@@ -27,7 +27,7 @@ gcloud container --project "devops-sandbox-2023" clusters create-auto "autopilot
 └──README
 
 export PROJECT_ID=devops-sandbox-2023
-gcloud deploy apply --file clouddeploy.yaml --region=asia-southeast1 --project=$PROJECT_ID
+gcloud deploy apply --file clouddeploy.yaml --region=asia-southeast1 --project=devops-sandbox-2023
 
 # Step 4
 
