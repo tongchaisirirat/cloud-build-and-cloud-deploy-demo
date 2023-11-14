@@ -3,14 +3,14 @@
 steps:
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '.', '-t', 'asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:latest', '-f', 'Dockerfile']
+  args: ['build', '.', '-t', 'asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}', '-f', 'Dockerfile']
 
 
 # Push the container image
 
 
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:latest']
+  args: ['push', 'asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}']
 # Create release in Google Cloud Deploy
 
 
@@ -22,5 +22,5 @@ steps:
       "--delivery-pipeline", "gitops",
       "--region", "asia-southeast1",
       "--annotations", "commitId=${REVISION_ID}",
-      "--images", "mind-artifact/nginx-image=asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:latest"
+      "--images", "mind-artifact/nginx-image=asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}"
     ]
