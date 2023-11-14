@@ -1,18 +1,26 @@
-steps:
 # Build and tag using commit sha
+
+steps:
+
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '.', '-t', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/mind-artifact/nginx-image:${COMMIT_SHA}', '-f', 'Dockerfile']
+  args: ['build', '.', '-t', 'asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}', '-f', 'Dockerfile']
+
+
 # Push the container image
+
+
 - name: 'gcr.io/cloud-builders/docker'
-  args: ['push', 'asia-southeast1-docker.pkg.dev/$PROJECT_ID/mind-artifact/nginx-image:${COMMIT_SHA}']
+  args: ['push', 'asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}']
+
 # Create release in Google Cloud Deploy
+
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
   entrypoint: gcloud
   args:
     [
       "deploy", "releases", "create", "rel-${SHORT_SHA}",
       "--delivery-pipeline", "gitops",
-      "--region", "us-central1",
+      "--region", "asia-southeast1",
       "--annotations", "commitId=${REVISION_ID}",
-      "--images", "mind-artifact/nginx-image=asia-southeast1-docker.pkg.dev/$PROJECT_ID/mind-artifact/nginx-image:${COMMIT_SHA}"
+      "--images", "mind-artifact/nginx-image=asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}"
     ]
