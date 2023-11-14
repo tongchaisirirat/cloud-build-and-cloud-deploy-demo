@@ -1,0 +1,26 @@
+# Build and tag using commit sha
+
+steps:
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['build', '.', '-t', 'asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}', '-f', 'Dockerfile']
+
+
+# Push the container image
+
+
+- name: 'gcr.io/cloud-builders/docker'
+  args: ['push', 'asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}']
+# Create release in Google Cloud Deploy
+
+
+- name: gcr.io/google.com/cloudsdktool/cloud-sdk
+  entrypoint: gcloud
+  args:
+    [
+      "deploy", "releases", "create", "rel-${SHORT_SHA}",
+      "--delivery-pipeline", "gitops",
+      "--region", "asia-southeast1",
+      "--annotations", "commitId=${REVISION_ID}",
+      "--images", "nginx-image=asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}"
+    ]
