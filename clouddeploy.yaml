@@ -28,8 +28,8 @@ executionConfigs:
   - VERIFY
   - PREDEPLOY
   - POSTDEPLOY
-  defaultPool:
-    serviceAccount: 89653962997-compute@developer.gserviceaccount.com
+ # defaultPool:
+ #   serviceAccount: 89653962997-compute@developer.gserviceaccount.com
 
 ---
 #Our 2st Cluster TARGET
@@ -48,5 +48,5 @@ executionConfigs:
   - VERIFY
   - PREDEPLOY
   - POSTDEPLOY
-  defaultPool:
-    serviceAccount: 89653962997-compute@developer.gserviceaccount.com
+#  defaultPool:
+#    serviceAccount: 89653962997-compute@developer.gserviceaccount.com

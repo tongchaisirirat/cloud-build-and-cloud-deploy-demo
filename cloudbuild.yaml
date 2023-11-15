@@ -8,10 +8,11 @@ steps:
 
 # Push the container image
 
-
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}']
 
+
+# change add commit-sha to deployment.yaml file.
 - name: ubuntu
   args:
   - sed
