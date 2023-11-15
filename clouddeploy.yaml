@@ -1,44 +1,52 @@
 #Delivery Pipeline for our clusters
-
 apiVersion: deploy.cloud.google.com/v1
 kind: DeliveryPipeline
 metadata:
- name: gitops
+  name: gitops
 description: main application pipeline
 serialPipeline:
   stages:
   - targetId: qsdev
+    profiles:
+    - qsdev
   - targetId: qsprod
+    profiles:
+    - qsprod
 ---
 
 #Our 1st Cluster TARGET
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
- name: qsdev
-description: development cluster
+  name: qsdev
 gke:
- cluster:  projects/devops-sandbox-2023/locations/asia-southeast1/clusters/autopilot-cluster-mind-test
+  cluster: projects/devops-sandbox-2023/locations/asia-southeast1/clusters/autopilot-cluster-mind-test
 executionConfigs:
-- defaultPool:
+- usages:
+  - RENDER
+  - DEPLOY
+  - VERIFY
+  - PREDEPLOY
+  - POSTDEPLOY
+  defaultPool:
     serviceAccount: 89653962997-compute@developer.gserviceaccount.com
-  usages:
-  - RENDER 
-  - DEPLOY   
+
 ---
 #Our 2st Cluster TARGET
 
 apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
- name: qsprod
-description: production cluster
+  name: qsprod
 requireApproval: true
 gke:
- cluster:  projects/devops-sandbox-2023/locations/asia-southeast1/clusters/autopilot-cluster-mind-prod
+  cluster: projects/devops-sandbox-2023/locations/asia-southeast1/clusters/autopilot-cluster-mind-prod
 executionConfigs:
-- defaultPool:
-    serviceAccount: 89653962997-compute@developer.gserviceaccount.com
-  usages:
-  - RENDER 
+- usages:
+  - RENDER
   - DEPLOY
+  - VERIFY
+  - PREDEPLOY
+  - POSTDEPLOY
+  defaultPool:
+    serviceAccount: 89653962997-compute@developer.gserviceaccount.com

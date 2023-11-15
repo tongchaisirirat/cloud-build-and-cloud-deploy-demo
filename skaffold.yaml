@@ -1,5 +1,5 @@
-apiVersion: skaffold/v2beta26
-kind: Config
+apiVersion: skaffold/v4beta7
+Kind: Config
 metadata:
   name: git-ops
 build:
