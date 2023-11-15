@@ -33,7 +33,7 @@ gcloud deploy apply --file clouddeploy.yaml --region=asia-southeast1 --project=d
 
 git add .
 git commit -m “Added Version 1 in index.html”
-git push
+git push --all origin
  or 
 
  git add . && git commit -m “edit readme.md” && git push --all origin
