@@ -12,6 +12,22 @@ steps:
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}']
 
+- name: ubuntu
+  args:
+  - sed
+  - "-i"
+  - s~<VERSION>~${COMMIT_SHA}~
+  - "deployment.yaml"
+
+- name: 'gcr.io/cloud-builders/git'
+  args: ['add', '.']
+
+- name: 'gcr.io/cloud-builders/git'
+  args: ['commit', '-m', 'update']
+
+- name: 'gcr.io/cloud-builders/git'
+  args: ['push', '--all', 'origin'] 
+
 # Create release in Google Cloud Deploy
 
 - name: gcr.io/google.com/cloudsdktool/cloud-sdk
@@ -25,10 +41,3 @@ steps:
       "--images", "nginx-image=asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}" 
       ]
 
-- name: gcr.io/cloud-builders/kubectl
-  args:
-    - apply
-    - -f
-    - deployment.yaml
-  env:
-    - "COMMIT_SHA=${COMMIT_SHA}"
