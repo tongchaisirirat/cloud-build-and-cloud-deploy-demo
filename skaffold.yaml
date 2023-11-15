@@ -4,7 +4,7 @@ metadata:
   name: git-ops
 build:
   artifacts:
-  - image: asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}
+  - image: asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image
     docker:
       dockerfile: Dockerfile
 deploy:
