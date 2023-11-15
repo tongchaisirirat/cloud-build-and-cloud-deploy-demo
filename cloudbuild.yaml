@@ -20,7 +20,7 @@ steps:
   - "deployment.yaml"
 
 - name: 'gcr.io/cloud-builders/git'
-  args: ['add .']
+  args: ['add','.']
 
 - name: 'gcr.io/cloud-builders/git'
   args: ['commit -m “tset”']
