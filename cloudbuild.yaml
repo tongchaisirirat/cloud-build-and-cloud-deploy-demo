@@ -22,6 +22,5 @@ steps:
       "--delivery-pipeline", "gitops",
       "--region", "asia-southeast1",
       "--annotations", "commitId=${REVISION_ID}",
-      "--images", "nginx-image=asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}",
-      "--configuration=qsdev"
-    ]
+      "--images", "nginx-image=asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}" 
+      ]

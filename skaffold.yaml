@@ -1,14 +1,13 @@
-apiVersion: skaffold/v2beta28
+apiVersion: skaffold/v3alpha1
 kind: Config
-metadata:
-  name: git-ops
-build:
-  artifacts:
-  - image: asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image
-    context: .
-    docker:
-      dockerfile: Dockerfile
 deploy:
-  kubectl:
-    manifests:
-    - deployment.yaml
+  kubectl: {}
+profiles:
+- name: qsdev
+  manifests:
+    rawYaml:
+    - k8s-qsdev.yaml
+- name: qsprod
+  manifests:
+    rawYaml:
+    - k8s-qsprod.yaml
