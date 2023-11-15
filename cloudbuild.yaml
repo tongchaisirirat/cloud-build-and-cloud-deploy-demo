@@ -20,13 +20,13 @@ steps:
   - "deployment.yaml"
 
 - name: 'gcr.io/cloud-builders/git'
-  args: ["add", "."]
+  args: ['add .']
 
 - name: 'gcr.io/cloud-builders/git'
-  args: ["commit", "'-m'", "update"]
+  args: ['commit -m “tset”']
 
 - name: 'gcr.io/cloud-builders/git'
-  args: ["push", "--all", "origin"] 
+  args: ['push --all origin']
 
 # Create release in Google Cloud Deploy
 
