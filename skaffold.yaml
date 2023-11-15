@@ -1,15 +1,13 @@
 apiVersion: skaffold/v3alpha1
 kind: Config
-metadata:
-  name: git-ops
-build:
-  artifacts:
-  - image: nginx-image
-    context: .
-    docker:
-      dockerfile: Dockerfile
-manifests:
-  rawYaml:
-  - deployment.yaml
 deploy:
   kubectl: {}
+profiles:
+- name: qsdev
+  manifests:
+    rawYaml:
+    - deployment.yaml
+- name: qsprod
+  manifests:
+    rawYaml:
+    - deployment.yaml
