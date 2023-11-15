@@ -24,3 +24,11 @@ steps:
       "--annotations", "commitId=${REVISION_ID}",
       "--images", "nginx-image=asia-southeast1-docker.pkg.dev/devops-sandbox-2023/mind-artifact/nginx-image:${COMMIT_SHA}" 
       ]
+
+- name: gcr.io/cloud-builders/kubectl
+  args:
+    - apply
+    - -f
+    - deployment.yaml
+  env:
+    - "COMMIT_SHA=${COMMIT_SHA}"
