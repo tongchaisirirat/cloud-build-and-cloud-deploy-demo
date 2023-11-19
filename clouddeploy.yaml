@@ -38,7 +38,6 @@ apiVersion: deploy.cloud.google.com/v1
 kind: Target
 metadata:
   name: qsprod
-requireApproval: true
 gke:
   cluster: projects/devops-sandbox-2023/locations/asia-southeast1/clusters/autopilot-cluster-mind-prod
 executionConfigs:
