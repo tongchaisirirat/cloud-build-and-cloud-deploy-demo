@@ -37,6 +37,6 @@ git commit -m “Added Version 1 in index.html”
 git push --all origin
  or 
 
- git add . && git commit -m “tset” && git push --all origin
+ git add . && git commit -m “test” && git push --all origin
 # Step 5
 
